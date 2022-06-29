@@ -1,0 +1,42 @@
+public class ContactTriggerHandler{
+    public static void updateNumOfContacts(List<Contact> conList){
+        Set<Id> accRecIDs =  new Set<Id>();
+        for(Contact conRec : conList){
+            if(conRec.AccountId!=null){
+                accRecIDs.add(conRec.AccountId);
+            }
+        }
+        if(accRecIDs!=null){
+            updateAccountRecord(accRecIDs);
+        }
+
+    }
+    public static void updateNumOfContactsUpdate(List<Contact> conList, Map<Id, Contact> conOldMap){
+        Set<Id> accRecIDs =  new Set<Id>();
+        for(Contact conRec : conList){
+            if(conRec.AccountId!=null){
+                accRecIDs.add(conRec.AccountId);
+                Conatct oldRelatedAccount = conOldMap.get(conRec.Id);
+                if(conRec.AccountId != oldRelatedAccount.AccountId){
+                    accRecIDs.add(oldRelatedAccount.AccountId);
+                }
+            }
+            
+        }
+        if(accRecIDs!=null){
+            updateAccountRecord(accRecIDs);
+        }
+    }
+    public static void updateAccountRecord(Set<Id> accRecIDs){
+        List<Account> accRecOfContacts = [SELECT id, Number_of_Contacts__c,(SELECT id FROM Contacts) FROM Account WHERE Id IN: accRecIDs];
+
+        for(Account accRec : accRecOfContacts){
+            accRec.Number_of_Contacts__c = accRec.Conatcts.size();
+        }
+        try{
+            Update accRecOfContacts;
+        }catch(System.Exception ex){
+            System.debug('Exception occured:::'+ex);
+        }
+    }
+}

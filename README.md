@@ -1,18 +1,15 @@
-# Salesforce DX Project: Next Steps
+1. Create a field on Account named "Number of Contacts". Populate this field with the number of contacts related to an account. 
+Approach :
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+Created a field - Number of Contacts in Account object : objects/Accounts/fields/Number_of_Contacts__c.field-meta
 
-## How Do You Plan to Deploy Your Changes?
+Trigger on Contact : classes/ContactTrigger.apxt
+Handler Class : classes/ContactTriggerHandler.apxc
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+ 2. Build a basic lightning component that can query a list of 10 most recently created accounts and display it using a lightning app. 
 
-## Configure Your Salesforce DX Project
+ 3. Make a basic http callout and print the result using system.debug
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+https://postman-echo.com/get?foo1=bar1&foo2=bar2
 
-## Read All About It
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)

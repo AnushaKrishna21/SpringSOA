@@ -1,0 +1,14 @@
+trigger ConatactTrigger on Contact(After Insert, After Update, After Delete, After Undelete){
+    if(Trigger.isAfter && Trigger.isInsert){
+        ContactTriggerHandler.updateNumOfContacts(Trigger.new);
+    }
+    if(Trigger.isAfter && Trigger.isUpdate){
+        ContactTriggerHandler.updateNumOfContactsUpdate(Trigger.new, Trigger.oldMap);
+    }
+    if(Trigger.isAfter && Trigger.isDelete){
+        ContactTriggerHandler.updateNumOfContacts(Trigger.old);
+    }
+    if(Trigger.isAfter && Trigger.isUndelete){
+        ContactTriggerHandler.updateNumOfContacts(Trigger.new);
+    }
+}
