@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:lightningQuickAction" access="global" 
+                controller="AccountGetRecords">
+	<aura:attribute name="columns" type="List"/>
+    <aura:attribute name="data" type="Account[]"/>
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    
+    <div style="height: 1000px" class="">
+        <lightning:datatable aura:id="DataTable"
+                             keyField="id"
+                             data="{! v.data }"
+                             columns="{! v.columns }"
+                             hideCheckboxColumn="true"/>
+        
+    </div>
+</aura:component>
